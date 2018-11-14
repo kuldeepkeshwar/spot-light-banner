@@ -1,0 +1,22 @@
+.circle {
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: yellow;
+  background-image: url(https://picsum.photos/320/50?id=4);
+  border-radius: 50%;
+}
+
+.container {
+  position: relative;
+  width: 320px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.text-container {
+  height: 50px;
+  background: red;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
