@@ -1,22 +1,19 @@
-function createCircle(cx, cy, radius) {
-  let div = document.getElementById("circle");
-  div.style.width = radius + "px";
-  div.style.height = radius + "px";
-  div.style.left = cx + "px";
-  div.style.top = cy + "px";
-  div.style.transitionProperty = "width, height;";
-  div.style.transitionDuration = "1s";
-}
-function growCircle(radius) {
-  let div = document.getElementById("circle");
-  div.style.width = radius * 2 + "px";
-  div.style.height = radius * 2 + "px";
-}
-
-createCircle(60, 25, 30);
-setTimeout(function() {
-  growCircle(35);
-});
-setTimeout(function() {
-  // growCircle(40);
-});
+const config = {
+  gamma: 40,
+  trigger: 0.7,
+  width: 500,
+  height: 50,
+  circle: { position: { x: 60, y: 25 }, radius: 15 },
+  texts: {
+    "2.6": "TRY NOW",
+    7: "GOOD START",
+    9: "TRY NOW",
+    15: "GREAT GOING",
+    17: "TRY NOW",
+    21: "ALMOST THERE",
+    23: "TRY NOW",
+    "28.5": "YOU DID IT"
+  }
+};
+const start = window.spotLight(config);
+start();
