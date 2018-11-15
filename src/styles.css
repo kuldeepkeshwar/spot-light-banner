@@ -23,3 +23,6 @@
   align-items: center;
   justify-content: space-evenly;
 }
+.text {
+  min-width: 75px;
+}
