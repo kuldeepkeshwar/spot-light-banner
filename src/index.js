@@ -1,9 +1,9 @@
 const config = {
   gamma: 40,
   trigger: 0.7,
-  width: 500,
+  width: 320,
   height: 50,
-  circle: { position: { x: 60, y: 25 }, radius: 15 },
+  circle: { position: { x: 40, y: 25 }, radius: 15 },
   texts: {
     5: "TRY NOW",
     20: "GOOD START",

@@ -46,13 +46,16 @@ function spotLight(options) {
   }
 
   function handler(event) {
+    const gamma = event.gamma;
+    const ratio = gamma / options.gamma;
+    const percentage = ratio * 100;
     if (running) {
-      const gamma = event.gamma;
-      const ratio = gamma / options.gamma;
-      const percentage = ratio * 100;
       const r = ratio * maxRadius;
       if (minGamma <= gamma && gamma <= breakpoint) {
         growCircle(r);
+        progress(percentage);
+      } else if (gamma < minGamma) {
+        growCircle(options.circle.radius);
         progress(percentage);
       } else if (gamma > breakpoint) {
         revealBanner();
