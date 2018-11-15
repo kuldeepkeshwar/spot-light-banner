@@ -2,8 +2,9 @@ function spotLight(options) {
   const maxRadius = options.width - options.circle.position.x;
   const minGamma = (options.gamma * options.circle.radius) / maxRadius;
   const breakpoint = options.gamma * options.trigger;
+  const progress = options.progress || noop;
   let running = true;
-
+  function noop() {}
   function setCircle(cx, cy, radius) {
     let circle = document.getElementById("circle");
     let banner = document.getElementById("banner");
@@ -35,9 +36,9 @@ function spotLight(options) {
     const banner = document.getElementById("banner");
     const textContainer = document.getElementById("text-container");
     requestAnimationFrame(function() {
-      circle.style.transitionDuration = "3s";
-      banner.style.transitionDuration = "3s";
-      textContainer.style.transition = "color 1.5s linear";
+      circle.style.transitionDuration = "2s";
+      banner.style.transitionDuration = "2s";
+      textContainer.style.transition = "color 2s linear";
       textContainer.style.color = "#0055ff";
       growCircle(maxRadius);
     });
@@ -47,15 +48,21 @@ function spotLight(options) {
   function handler(event) {
     if (running) {
       const gamma = event.gamma;
+      const ratio = gamma / options.gamma;
+      const percentage = ratio * 100;
+      const r = ratio * maxRadius;
       if (minGamma <= gamma && gamma <= breakpoint) {
-        const r = (gamma * maxRadius) / options.gamma;
         growCircle(r);
+        progress(percentage);
       } else if (gamma > breakpoint) {
         revealBanner();
         running = false;
+        progress(100);
       }
       updateText(
-        options.texts[closest(gamma, Object.keys(options.texts).map(Number))]
+        options.texts[
+          closest(percentage, Object.keys(options.texts).map(Number))
+        ]
       );
     }
   }

@@ -5,14 +5,17 @@ const config = {
   height: 50,
   circle: { position: { x: 60, y: 25 }, radius: 15 },
   texts: {
-    "2.6": "TRY NOW",
-    7: "GOOD START",
-    9: "TRY NOW",
-    15: "GREAT GOING",
-    17: "TRY NOW",
-    21: "ALMOST THERE",
+    5: "TRY NOW",
+    20: "GOOD START",
     23: "TRY NOW",
-    "28.5": "YOU DID IT"
+    35: "GREAT GOING",
+    38: "TRY NOW",
+    50: "ALMOST THERE",
+    53: "TRY NOW",
+    70: "YOU DID IT"
+  },
+  progress: function(precent) {
+    console.log({ precent });
   }
 };
 const start = window.spotLight(config);
